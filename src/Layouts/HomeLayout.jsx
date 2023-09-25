@@ -28,6 +28,14 @@ function HomeLayout({ children }) {
         drawerSide[0].style.width = '0';
     }
 
+    function  handleLogout(e) {
+        e.preventDefault();
+
+        // const res = await dispatch(logout());
+        // if(res?.payload?.success)
+        navigate("/");
+    }
+
     return (
         <div className="min-h-[90vh] w-fit bg-black">
             <div className="drawer absolute left-0 z-50 w-fit bg-black">
@@ -71,15 +79,29 @@ function HomeLayout({ children }) {
                             <Link to="/about">About Us</Link>
                         </li>
 
-                        {isLoggedIn && (
-                            <div className='w-full flex items-center justify-center'>
-                                <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full'>
-                                    <Link to="/login">Login</Link>
-                                </button>
-                                <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full'>
-                                    <Link to="/login">signup</Link>
-                                </button>
-                            </div>
+                        {!isLoggedIn && (
+                            <li className='absolute bottom-4 w-[90%]'>
+                                <div className='w-full flex items-center justify-center'>
+                                    <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full'>
+                                        <Link to="/login">Login</Link>
+                                    </button>
+                                    <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full'>
+                                        <Link to="/login">signup</Link>
+                                    </button>
+                                </div>
+                            </li>
+                        )}
+                        {!isLoggedIn && (
+                            <li className='absolute bottom-4 w-[90%]'>
+                                <div className='w-full flex items-center justify-center'>
+                                    <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full'>
+                                        <Link to="/user/profile">Profile</Link>
+                                    </button>
+                                    <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full'>
+                                        <Link onClick={handleLogout}>Logout</Link>
+                                    </button>
+                                </div>
+                            </li>
                         )}
                     </ul>
                 </div>

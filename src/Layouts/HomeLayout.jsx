@@ -37,7 +37,7 @@ function HomeLayout({ children }) {
     }
 
     return (
-        <div className="min-h-[90vh] w-fit bg-black">
+        <div className="min-h-[90vh]  bg-black">
             <div className="drawer absolute left-0 z-50 w-fit bg-black">
                 <input className="drawer-toggle" id="my-drawer" type="checkbox" />
                 <div className="drawer-content">
@@ -86,12 +86,12 @@ function HomeLayout({ children }) {
                                         <Link to="/login">Login</Link>
                                     </button>
                                     <button className='btn-secondary px-4 py-1 font-semibold rounded-md w-full'>
-                                        <Link to="/login">signup</Link>
+                                        <Link to="/signup">Signup</Link>
                                     </button>
                                 </div>
                             </li>
                         )}
-                        {!isLoggedIn && (
+                        {isLoggedIn && (
                             <li className='absolute bottom-4 w-[90%]'>
                                 <div className='w-full flex items-center justify-center'>
                                     <button className='btn-primary px-4 py-1 font-semibold rounded-md w-full'>

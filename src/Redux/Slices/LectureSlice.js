@@ -56,21 +56,78 @@ export const deleteCourseLecture = createAsyncThunk("/course/lecture/delete", as
     }
 });
 
+// // function to delete the course
+// export const deleteCourse = createAsyncThunk("/course/delete", async (id) => {
+//     try {
+//       const res = axiosInstance.delete(`courses/${id}`);
+  
+//       toast.promise(res, {
+//         loading: "Deleting the course...",
+//         success: "Courses deleted successfully",
+//         error: "Failed to delete course",
+//       });
+  
+//       const response = await res;
+  
+//       return response.data;
+//     } catch (error) {
+//       toast.error(error?.response?.data?.message);
+//     }
+//   });
+
+// export const deleteCourseLecture = createAsyncThunk(
+//     "/course/lecture/delete",
+//     async (data) => {
+//       console.log(data);
+//       try {
+//         const res = axiosInstance.delete(
+//           `/courses/?courseId=${data.courseId}&lectureId=${data.lectureId}`
+//         );
+  
+//         toast.promise(res, {
+//           loading: "Deleting the lecture...",
+//           success: "Lecture deleted successfully",
+//           error: "Failed to delete lecture",
+//         });
+  
+//         const response = await res;
+//         return response.data;
+//       } catch (error) {
+//         toast.error(error?.response?.data?.message);
+//       }
+//     }
+//   );
+  
+
+// const lectureSlice = createSlice({
+//     name: "lecture",
+//     initialState,
+//     reducers: {},
+//     extraReducers: (builder) => {
+//         builder.addCase(getCourseLectures.fulfilled, (state, action) => {
+//             console.log(action);
+//             state.lectures = action?.payload?.lectures;
+//         })
+//         .addCase(addCourseLecture.fulfilled, (state, action) => {
+//             console.log(action);
+//             state.lectures = action?.payload?.course?.lectures;
+//         })
+//     }
+// });
 
 const lectureSlice = createSlice({
     name: "lecture",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(getCourseLectures.fulfilled, (state, action) => {
-            console.log(action);
-            state.lectures = action?.payload?.lectures;
+      builder
+        .addCase(getCourseLectures.fulfilled, (state, action) => {
+          state.lectures = action?.payload?.lectures;
         })
         .addCase(addCourseLecture.fulfilled, (state, action) => {
-            console.log(action);
-            state.lectures = action?.payload?.course?.lectures;
-        })
-    }
-});
+          state.lectures = action?.payload?.course?.lectures;
+        });
+    },
+  });
 
 export default lectureSlice.reducer;

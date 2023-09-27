@@ -10,6 +10,7 @@ function Displaylectures() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const {state} = useLocation();
+    console.log(state);
     const {lectures} = useSelector((state) => state.lecture);
     const {role} = useSelector((state) => state.auth);
 
